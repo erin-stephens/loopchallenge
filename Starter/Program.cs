@@ -65,11 +65,11 @@ foreach (string name in studentNames)
 
     int gradedAssignments = 0;
 
-    int examScore = 0;
+    decimal examScore = 0;
 
     int extraCreditScore = 0;
 
-    int extraCreditPoints = 0;
+    decimal extraCreditPoints = 0;
 
     /* 
     the inner foreach loop sums assignment scores
@@ -83,7 +83,14 @@ foreach (string name in studentNames)
             sumAssignmentScores += score;
 
         else
-            sumAssignmentScores += score / 10;
+           sumAssignmentScores += score / 10;
+
+        
+        if (gradedAssignments <= examAssignments)
+            examScore = (decimal) sumAssignmentScores / examAssignments;
+        
+        else
+            // extraCreditScore = sumAssignmentScores
     }
 
     currentStudentGrade = (decimal)(sumAssignmentScores) / examAssignments;
