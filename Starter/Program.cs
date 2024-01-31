@@ -59,17 +59,16 @@ foreach (string name in studentNames)
     else if (currentStudent == "Logan")
         studentScores = loganScores;
 
+    int gradedAssignments = 0;
+    int gradedExtraCreditAssignments = 0;
+    
     int sumAssignmentScores = 0;
+    int sumExtraCreditScores = 0;
 
     decimal currentStudentGrade = 0;
-
-    int gradedAssignments = 0;
-
-    int examScore = 0;
-
-    int extraCreditScore = 0;
-
-    int extraCreditPoints = 0;
+    decimal examScore = 0;
+    decimal extraCreditScore = 0;
+    decimal extraCreditPoints = 0;
 
     /* 
     the inner foreach loop sums assignment scores
@@ -80,13 +79,17 @@ foreach (string name in studentNames)
         gradedAssignments += 1;
 
         if (gradedAssignments <= examAssignments)
-            sumAssignmentScores += score;
+            {
+                sumAssignmentScores += score;
+            }
 
         else
-            sumAssignmentScores += score / 10;
+           {
+            gradedExtraCreditAssignments += 1;
+            sumExtraCreditScores += score;
+           }
     }
 
-    currentStudentGrade = (decimal)(sumAssignmentScores) / examAssignments;
 
     if (currentStudentGrade >= 97)
         currentStudentLetterGrade = "A+";
